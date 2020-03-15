@@ -34,7 +34,6 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
-
 	<?php session_start();  
     include('login/condb.php');
 
@@ -42,7 +41,8 @@
     $name = $_SESSION['name'];
 	$level = $_SESSION['level'];
 	$loginn = $_SESSION['login_in'];
- 
+	$mail1 = $_SESSION["Email"];
+
 	?>
 
 	</head>
@@ -75,7 +75,6 @@
 									echo "<li><a href='http://localhost/beryllium/login/register.php'>REGISTER</a></li>";
 								}
 							?>
-							<li><a href="about.php">about</a></li>
                             </ul>
                         </div>
                     </div>
@@ -88,16 +87,14 @@
 		<div class="gtco-section">
 			<div class="gtco-container">
 				<div class="row gtco-heading">
-					<div class="col-md-7 text-left">
-						<h2>GRAND THEFT AUTO V</h2>
+					<div class="col-md-7 text-left">			
+						<h2>Grand Theft Auto V</h2>
 						<p>When a young street hustler, a retired bank robber and a terrifying psychopath find themselves entangled with some of the most frightening and deranged elements of the criminal underworld, the U.S. government and the entertainment industry, they must pull off a series of dangerous heists to survive in a ruthless city in which they can trust nobody, least of all each other.
 
-                            Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.
-                            
-                            The game offers players a huge range of PC-specific customization options, including over 25 separate configurable settings for texture quality, shaders, tessellation, anti-aliasing and more, as well as support and extensive customization for mouse and keyboard controls. Additional options include a population density slider to control car and pedestrian traffic, as well as dual and triple monitor support, 3D compatibility, and plug-and-play controller support.</p>
+Grand Theft Auto V for PC offers players the option to explore the award-winning world of Los Santos and Blaine County in resolutions of up to 4k and beyond, as well as the chance to experience the game running at 60 frames per second.</p>
                         <video width="650" controls autoplay>
-                            <source src="https://steamcdn-a.akamaihd.net/steam/apps/256703142/movie480.webm?t=1513275242" type="video/mp4">
-                            <source src="https://steamcdn-a.akamaihd.net/steam/apps/256703142/movie480.webm?t=1513275242" type="video/ogg">
+                            <source src="https://steamcdn-a.akamaihd.net/steam/apps/256723106/movie480.webm?t=1532462557" type="video/mp4">
+                            <source src="https://steamcdn-a.akamaihd.net/steam/apps/256723106/movie480.webm?t=1532462557" type="video/ogg">
                             
                           </video>
                           
@@ -107,8 +104,46 @@
                           </p>
 					</div>
 					<div class="col-md-3 col-md-push-2 text-center">
-                        
-						<p class="mt-md"><a href="#" class="btn btn-special btn-block">BUY NOW</a></p>
+					<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+					<input type="submit" value="BUY NOW!!" name="pop"></form>
+					<br><div><h2>580฿</h2></div>
+					<?php #ส่งเกม
+                                    $io = 0;
+                                    
+                                    function yui($val){
+                                    return $val;
+                                    }
+                                    if(isset($_POST["pop"])){
+                                    echo yui($_POST["pop"]);
+                                    $io = $io+1;
+                                } 
+                                if ($io==1){
+                                    if($loginn == 0){
+                                        echo "<script type=\"text/javascript\">";
+                                        echo "alert(\"PLEASE LOGIN FIRST\");";
+                                        echo "window.history.back();";
+                                        echo "</script>";;
+									}
+									else{
+                                    
+									$order_time = date("Y-m-d H:i:s");
+									$Price =$_POST['Price'];
+									$name = $_SESSION['name'];
+                                    
+                                    mysqli_query($con, "INSERT INTO Gorder(Gname, Price, order_time, username, Email)
+                                    VALUES('Grand Theft Auto V',580, '$order_time','$name','$mail1')");
+                                    echo "<script type=\"text/javascript\">";
+                                    echo "alert(\"Game  add!!\");";
+									echo "window.history.back();";	
+									Header("Location: payment/pay.php");
+                                    echo "</script>";
+                                    exit();
+                                    }	
+                                }
+                                else {
+                                    echo "<br>";
+                                } 
+                                ?>
 					</div>
 				</div>
 				<div class="row">
@@ -117,29 +152,27 @@
 						<div class="owl-carousel owl-carousel-carousel">
 							<div class="item">
 								<div class="gtco-staff">
-									<img src="https://cdn.gtaboom.com/wp-content/uploads/2013/07/gta-5-cheats-pc-1.jpg" alt="" class="img-responsive">
-									<h2>Action Games</h2>
-
+									<img src="https://steamcdn-a.akamaihd.net/steam/apps/271590/ss_da39c16db175f6973770bae6b91d411251763152.600x338.jpg?t=1579797647" alt="" class="img-responsive">
+									<h2>Grand Theft Auto Online</h2>
+                                    With support for 30 players and two spectators. Grand Theft Auto Online for PC will include all existing gameplay upgrades and Rockstar-created content released since the launch of Grand Theft Auto Online, including Heists and Adversary modes.
 									<p> 
-									Grand Theft Auto V for PC also includes Grand Theft Auto Online, with support for 30 players and two spectators. Grand Theft Auto Online for PC will include all existing gameplay upgrades and Rockstar-created content released since the launch of Grand Theft Auto Online, including Heists and Adversary modes</p>
+										</p>
 								</div>
 							</div>
 							<div class="item">
 								<div class="gtco-staff">
-									<img src="https://i.ytimg.com/vi/vnrwUGvd_kY/maxresdefault.jpg" alt="" class="img-responsive">
-									<h2>Key Features</h2>
+									<img src="https://steamcdn-a.akamaihd.net/steam/apps/271590/ss_4627498ce6ec1516512468eecfb9f90b7fdf438b.600x338.jpg?t=1579797647" alt="" class="img-responsive">
+									<h2>Los Santos</h2>
 
-									<p>• Grand Theft Auto V for PC also brings the debut of the Rockstar Editor, a powerful suite of creative tools to quickly and easily capture, edit and share game footage from within Grand Theft Auto V and Grand Theft Auto Online. The Rockstar Editor’s Director Mode allows players the ability to stage their own scenes using prominent story characters.</p>
+									<p>The PC version of Grand Theft Auto V and Grand Theft Auto Online features First Person Mode, giving players the chance to explore the incredibly detailed world of Los Santos and Blaine County in an entirely new way.</p>
 
 								</div>
 							</div>
 							<div class="item">
 								<div class="gtco-staff">
-									<img src="https://notebookspec.com/web/wp-content/uploads/2014/10/gta01.jpg" alt="" class="img-responsive">
-									<h2>MATURE CONTENT DESCRIPTION</h2>
-                                    The developers describe the content like this:
-
-                                    This Game may contain content not appropriate for all ages, or may not be appropriate for viewing at work: General Mature Content
+									<img src="https://steamcdn-a.akamaihd.net/steam/apps/271590/ss_8b7ae7209f3c3422e76d452c290bd282265caa35.600x338.jpg?t=1579797647" alt="" class="img-responsive">
+									<h2>First Person Mode</h2>
+                                    The PC version of Grand Theft Auto V and Grand Theft Auto Online features First Person Mode, giving players the chance to explore the incredibly detailed world of Los Santos and Blaine County in an entirely new way.
 								</div>
 							</div>
 
@@ -158,13 +191,15 @@
 					<div class="col-md-6 gtco-news">
 						<div class="game_area_sys_req_leftCol">
 							<ul>
-								<strong>Minimum:</strong><br><ul class="bb_ul"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1<br></li><li><strong>Processor:</strong> Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5GHz<br></li><li><strong>Memory:</strong> 4 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)<br></li><li><strong>Storage:</strong> 72 GB available space<br></li><li><strong>Sound Card:</strong> 100% DirectX 10 compatible<br></li><li><strong>Additional Notes:</strong> Over time downloadable content and programming changes will change the system requirements for this game.  Please refer to your hardware manufacturer and <a href="https://steamcommunity.com/linkfilter/?url=http://www.rockstargames.com/support" target="_blank" rel="noopener">www.rockstargames.com/support</a> </li></ul>							</ul>
+								<strong><ul>
+								<strong>Minimum:</strong><br><ul class="bb_ul"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1<br></li><li><strong>Processor:</strong> Intel Core 2 Quad CPU Q6600 @ 2.40GHz (4 CPUs) / AMD Phenom 9850 Quad-Core Processor (4 CPUs) @ 2.5GHz<br></li><li><strong>Memory:</strong> 4 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA 9800 GT 1GB / AMD HD 4870 1GB (DX 10, 10.1, 11)<br></li><li><strong>Storage:</strong> 72 GB available space<br></li><li><strong>Sound Card:</strong> 100% DirectX 10 compatible<br></li><li><strong>Additional Notes:</strong> Over time downloadable content and programming changes will change the system requirements for this game.  Please refer to your hardware manufacturer and <a href="https://steamcommunity.com/linkfilter/?url=http://www.rockstargames.com/support" target="_blank" rel="noopener">www.rockstargames.com/support</a></ul>							</ul>
 						</div>
 					</div>
 					<!-- END News -->
 					<div class="col-md-6 gtco-news">
 						<div class="game_area_sys_req_leftCol">
 							<ul>
+								<strong><ul>
 								<strong>Recommended:</strong><br><ul class="bb_ul"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> Windows 10 64 Bit, Windows 8.1 64 Bit, Windows 8 64 Bit, Windows 7 64 Bit Service Pack 1<br></li><li><strong>Processor:</strong> Intel Core i5 3470 @ 3.2GHz (4 CPUs) / AMD X8 FX-8350 @ 4GHz (8 CPUs)<br></li><li><strong>Memory:</strong> 8 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA GTX 660 2GB / AMD HD 7870 2GB<br></li><li><strong>Storage:</strong> 72 GB available space<br></li><li><strong>Sound Card:</strong> 100% DirectX 10 compatible</li></ul>							</ul>
 						</div>
 					</div>
@@ -280,9 +315,16 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	
 	<script src="js/owl.carousel.min.js"></script>
-
-	
 	<script src="js/main.js"></script>
+	<style>
+	input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;}</style>
 
 	</body>
 </html>

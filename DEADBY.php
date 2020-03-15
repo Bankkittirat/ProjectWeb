@@ -41,6 +41,7 @@
     $name = $_SESSION['name'];
 	$level = $_SESSION['level'];
 	$loginn = $_SESSION['login_in'];
+	$mail1 = $_SESSION["Email"];
  
 	?>
 	</head>
@@ -74,7 +75,7 @@
 									echo "<li><a href='http://localhost/beryllium/login/register.php'>REGISTER</a></li>";
 								}
 							?>				
-							<li><a href="about.php">about</a></li>
+		
                             </ul>
                         </div>
                     </div>
@@ -108,6 +109,7 @@
 					<div class="col-md-3 col-md-push-2 text-center">
 					<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 					<input type="submit" value="BUY NOW!!" name="pop"></form>
+					<br><div><h2>380฿</h2></div>
 					<?php #ดึงคอมเม้นนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนต์
                                     $io = 0;
                                     
@@ -131,11 +133,12 @@
 									$Price =$_POST['Price'];
 									$name = $_SESSION['name'];
                                     
-                                    mysqli_query($con, "INSERT INTO Gorder(Gname, Price, order_time, username)
-                                    VALUES('DEAD BY DAYLIGHT',380, '$order_time','$name')");
+                                    mysqli_query($con, "INSERT INTO Gorder(Gname, Price, order_time, username, Email)
+                                    VALUES('DEAD BY DAYLIGHT',380, '$order_time','$name','$mail1')");
                                     echo "<script type=\"text/javascript\">";
                                     echo "alert(\"Game  add!!\");";
-                                    echo "window.history.back();";	
+									echo "window.history.back();";	
+									Header("Location: payment/pay.php");
                                     echo "</script>";
                                     exit();
                                     }	

@@ -4,18 +4,48 @@
 	Twitter: http://twitter.com/gettemplateco
 	URL: http://gettemplates.co
 -->
-  
-<?php session_start();  
-include('login/condb.php');
+<?php  
+ session_start(); 
  $username = $_SESSION["username"];
  $ID = $_SESSION['ID'];
     $name = $_SESSION['name'];
 	$level = $_SESSION['level'];
     $loginn = $_SESSION['login_in'];
-
+    $Mcoin =  $_SESSION["coin"];
  $connect = mysqli_connect("localhost", "root", "", "login_db");  
+    
 
-                        
+ 
+ include("../login/condb.php");
+ function getComment($con){
+     $sql3 = "SELECT * FROM gorder;";
+     $result = $con->query($sql3);
+     while ($row = $result->fetch_assoc()) {
+    $_SESSION["id"] = $row["id"];
+     
+     $_SESSION["Gname"] = $row["Gname"];
+     
+     $_SESSION["Price"] = $row["Price"];
+     }
+}	
+getComment($con);
+$YourG = $_SESSION["Gname"];
+$Price =  $_SESSION["Price"];
+$GID =  $_SESSION["id"];
+$CP= $_POST["coupon"];
+
+// if($CP != "QWERTY" || "ASDFGH" || "ZXCVBN"){
+    
+                                   
+    
+//     $CPW = "<h4>คุณกรอกโค้ดไม่ถูกต้อง<h4>";
+
+    
+    
+
+// }else{}
+
+                         
 
 //  if(isset($_POST["insert"]))  
 //  {  
@@ -82,19 +112,20 @@ include('login/condb.php');
 				
 				<div class="row">
 					<div class="col-sm-2 col-xs-12">
-						<div id="gtco-logo"><a href="index2.php">CSGAMESTORE</div>
+						<div id="gtco-logo"><a href="../index2.php">CSGAMESTORE</div>
 					</div>
 					<div class="col-xs-10 text-right menu-1 menuu">
 						<ul>
-						<?php if ($loginn == 1){
-								echo "<li class='TI3'> $name as $level &nbsp&nbsp </li>";
-								echo "<a class = 'TI2' href='http://localhost/beryllium/login/logout.php'>LOGOUT &nbsp&nbsp</a>";
-								}
+							<?php if ($loginn == 1){
+
+									echo "<li class='TI3'> $name as $level&nbsp&nbsp </li>";
+									echo "<a class = 'TI2' href='http://localhost/beryllium/login/logout.php'>LOGOUT &nbsp&nbsp</a>";
+							}
 								else{
-								echo "<a class = 'TI2' href='http://localhost/beryllium/login/'>LOGIN &nbsp&nbsp</a>";
-								echo "<a class = 'TI2' href=http://localhost/beryllium/login/register.php>REGISTER &nbsp&nbsp</a>";
+									echo "<a class = 'TI2' href='http://localhost/beryllium/login/'>LOGIN &nbsp&nbsp</a>";
+									echo "<a class = 'TI2' href=http://localhost/beryllium/login/register.php'>REGISTER &nbsp&nbsp</a>";
 								}
-								?>
+							?>
 							
 						</ul>
 					</div>
@@ -118,54 +149,96 @@ include('login/condb.php');
             .bg{
                 background-color:white;opacity:0.8;border-radius:16px;
             }
-            #div1 {
-                float:left;
-                width:100px;
-                height:100px;
-                border:solid 2px red;
-                text-align:center;
-            }
-            #div2 {
-                float:left;
-                width:100px;
-                height:100px;
-                border:solid 2px green;
-                text-align:center;
-            }
         </style>
         <br><br>  
 
            <div class="container " style="width:500px;">  
-                <h2 align="center">WEBSITE DEVELOPERS</h2><br> 
-                ?>
+                <h2 align="center">PAYMENT METHODS</h2><br>
+                <div align="center" class="TI3">
+                <?php 
+                switch ($CP) {
+                case "QWERTY":
+                    $Price = $Price*0.95;
+                    echo "Your Game : ".$YourG." --> Price : ".$Price." Baht"; 
+                    if($connect === false){ 
+                        die("ERROR: Could not connect. "  
+                                    . mysqli_connect_error()); 
+                    } 
+                      
+                    $sql2 = "UPDATE gorder SET Price=$Price WHERE id=$GID"; 
+                    if(mysqli_query($connect, $sql2)){ 
+                        echo "<br>คุณได้ใช้คูปองส่วนลดเรียบร้อยแล้ว."; 
+                    } else { 
+                        echo "ERROR: Could not able to execute $sql2. "  
+                                                . mysqli_error($connect); 
+                    }  
+                    mysqli_close($connect); 
+                    $_SESSION["CPrice"] = $Price;
+                    break;
+                case "ASDFGH":
+                    $Price = $Price*0.90;
+                            echo "Your Game : ".$YourG." --> Price : ".$Price." Baht";
+                            if($connect === false){ 
+                                die("ERROR: Could not connect. "  
+                                            . mysqli_connect_error()); 
+                            } 
+                              
+                            $sql2 = "UPDATE gorder SET Price=$Price WHERE id=$GID"; 
+                            if(mysqli_query($connect, $sql2)){ 
+                                echo "<br>คุณได้ใช้คูปองส่วนลดเรียบร้อยแล้ว."; 
+                            } else { 
+                                echo "ERROR: Could not able to execute $sql2. "  
+                                                        . mysqli_error($connect); 
+                            }  
+                            mysqli_close($connect); 
+                            $_SESSION["CPrice"] = $Price;
+                    break;
+                case "ZXCVBN":
+                    $Price = $Price*0.80;
+                    echo "Your Game : ".$YourG." --> Price : ".$Price." Baht"; 
+                    if($connect === false){ 
+                        die("ERROR: Could not connect. "  
+                                    . mysqli_connect_error()); 
+                    } 
+                      
+                    $sql2 = "UPDATE gorder SET Price=$Price WHERE id=$GID"; 
+                    if(mysqli_query($connect, $sql2)){ 
+                        echo "<br>คุณได้ใช้คูปองส่วนลดเรียบร้อยแล้ว."; 
+                    } else { 
+                        echo "ERROR: Could not able to execute $sql2. "  
+                                                . mysqli_error($connect); 
+                    }  
+                    mysqli_close($connect);
+                    $_SESSION["CPrice"] = $Price;
+                         break;
+                default:
+                echo "Your Game : ".$YourG." --> Price : ".$Price." Baht";
+                
+                echo "<br><br>"; 
+                echo "<h4>คุณกรอกโค้ดไม่ถูกต้อง<h4>";  
+                echo '<div align="center" >
+                        <a href="pay.php"><button type="button" value="HOME" class="button4 sizeb">กรอกโค้ดอีกครั้ง</button>
+                </div><br><br>';
+            }?>
             
+            
+    <br><br>
+                
+                
+          
+                
+                <div align="center" >
+					<a href="paycom.php"><button type="button" value="HOME" class="button4 sizeb">ยืนยันการชำระเงิน</button>
+			</div><br><br>
 
 
 
-<!-- <table>
-<td>
-<div  class="container " style="width:500px; ">
-    <div align="center" class="card cc" style="width: 38rem;">
-        <img src="pic/bank.jpg" style="height: 38rem;" class="card-img-top" alt="...">
-    </div><br> 
-    <div class="bg" align="center">
-        <h3 align="center">Mr.Kittirat Aomchompool<br>SCB </h3>
-    </div>
-</div><br><br>
-</td>
-<td>
-<div class="container " style="width:500px;">
-    <div align="center" class="card cc" style="width: 38rem;">
-        <img src="pic/goppy.jpg" style="height: 38rem;" class="card-img-top" alt="...">
-    </div><br>
-    <div class="bg">
-        <h3 align="center">Mr.Chutdanai Charoensri<br>SCB </h3>
-    </div>
-</div><br><br>
-</td>
-</table>	 -->
 
-        
+
+		
+
+          
+
             <style>
                 .sizeb{height:50px;width:200px;}
                 .button4 {
@@ -203,47 +276,29 @@ include('login/condb.php');
 
 	
 	<script src="js/main.js"></script>
-
 </div>
 <table align="center">
 <td>
 <div  class="container " style="width:500px; ">
     <div align="center" class="card cc" style="width: 38rem;">
-        <img src="https://scontent.fubp1-1.fna.fbcdn.net/v/t1.0-9/11406892_1134337706592676_6762417141612587236_n.jpg?_nc_cat=105&_nc_sid=7aed08&_nc_ohc=AYvfU_0x6oYAX_bBVGr&_nc_ht=scontent.fubp1-1.fna&oh=0db0881bf65dc283ea1cc2d26abeaa6f&oe=5E929DA0" style="height: 38rem;" class="card-img-top" alt="...">
+        <img src="pic/bank.jpg" style="height: 38rem;" class="card-img-top" alt="...">
     </div><br> 
     <div class="bg" align="center">
-        <h3 align="center">Mr.Warawoot Pacharoen<br>Professor of CSUBU<br>CEO </h3>
-    </div>
-</div><br><br>
-</td>
-</table>
-
-</div>
-<table align="center">
-<td>
-<div  class="container " style="width:500px; ">
-    <div align="center" class="card cc" style="width: 38rem;">
-        <img src="https://scontent.fubp1-1.fna.fbcdn.net/v/t1.0-9/65164837_2320273601426134_2729716183514218496_n.jpg?_nc_cat=111&_nc_sid=7aed08&_nc_ohc=3lvB6-zJc7sAX9yCLsm&_nc_ht=scontent.fubp1-1.fna&oh=c16912bd02d55c5609ff9ed81b412b29&oe=5E92F95C" style="height: 38rem;" class="card-img-top" alt="...">
-    </div><br> 
-    <div class="bg" align="center">
-        <h3 align="center">Mr.Kittirat Aomchompool<br>61114440052 &nbsp;&nbsp; CSUBU </h3>
+        <h3 align="center">Mr.Kittirat Aomchompool<br>SCB </h3>
     </div>
 </div><br><br>
 </td>
 <td>
 <div class="container " style="width:500px;">
     <div align="center" class="card cc" style="width: 38rem;">
-        <img src="https://scontent.fubp1-1.fna.fbcdn.net/v/t1.0-9/61789453_2423365084382883_5699541727732301824_n.jpg?_nc_cat=102&_nc_sid=7aed08&_nc_ohc=6ANlTxztHEwAX_3fCdq&_nc_ht=scontent.fubp1-1.fna&oh=fec6239c4940087713cdb39112d42ccc&oe=5E933CC9" style="height: 38rem;" class="card-img-top" alt="...">
+        <img src="pic/goppy.jpg" style="height: 38rem;" class="card-img-top" alt="...">
     </div><br>
     <div class="bg">
-        <h3 align="center">Mr.Chutdanai Charoensri<br>61114440119 &nbsp;&nbsp; CSUBU </h3>
+        <h3 align="center">Mr.Chutdanai Charoensri<br>SCB </h3>
     </div>
 </div><br><br>
 </td>
-</table>	
-<div align="center" >
-	<a href="index2.php"><button type="button" value="HOME" class="button4 sizeb">Back to home</button>
-</div><br><br><br><br>
+</table>
     <style>
 
 @import url('https://fonts.googleapis.com/css?family=Numans');

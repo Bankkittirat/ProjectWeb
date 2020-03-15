@@ -41,6 +41,7 @@
     $name = $_SESSION['name'];
 	$level = $_SESSION['level'];
 	$loginn = $_SESSION['login_in'];
+	$mail1 = $_SESSION["Email"];
  
 	?>
 
@@ -74,7 +75,7 @@
 									echo "<li><a href='http://localhost/beryllium/login/register.php'>REGISTER</a></li>";
 								}
 							?>
-							<li><a href="about.php">about</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -107,7 +108,8 @@
                         
 					<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
 					<input type="submit" value="BUY NOW!!" name="pop"></form>
-					<?php #ดึงคอมเม้นนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนต์
+					<br><div><h2>490฿</h2></div>
+					<?php #ส่งข้อมูลลลลลลลลลลลลลลล
                                     $io = 0;
                                     
                                     function yui($val){
@@ -130,11 +132,12 @@
 									$Price =$_POST['Price'];
 									$name = $_SESSION['name'];
                                     
-                                    mysqli_query($con, "INSERT INTO gorder(Gname, Price, order_time, username)
-                                    VALUES('PUBG',690, '$order_time','$name')");
+                                    mysqli_query($con, "INSERT INTO gorder(Gname, Price, order_time, username, Email)
+                                    VALUES('PUBG',490, '$order_time','$name','$mail1')");
                                     echo "<script type=\"text/javascript\">";
                                     echo "alert(\"Game  add!!\");";
-                                    echo "window.history.back();";	
+									echo "window.history.back();";
+									Header("Location: payment/pay.php");	
                                     echo "</script>";
                                     exit();
                                     }	
@@ -330,7 +333,7 @@
   padding: 16px 32px;
   text-decoration: none;
   margin: 4px 2px;
-  cursor: pointer;
+  cursor: pointer;	}
 	</style>
 
 	</body>

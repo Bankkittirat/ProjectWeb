@@ -41,7 +41,8 @@
     $name = $_SESSION['name'];
 	$level = $_SESSION['level'];
 	$loginn = $_SESSION['login_in'];
- 
+	$mail1 = $_SESSION["Email"];
+
 	?>
 
 	</head>
@@ -74,7 +75,7 @@
 									echo "<li><a href='http://localhost/beryllium/login/register.php'>REGISTER</a></li>";
 								}
 							?>
-							<li><a href="about.php">about</a></li>
+
                             </ul>
                         </div>
                     </div>
@@ -103,8 +104,46 @@
                           </p>
 					</div>
 					<div class="col-md-3 col-md-push-2 text-center">
-                        
-						<p class="mt-md"><a href="#" class="btn btn-special btn-block">BUY NOW</a></p>
+					<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+					<input type="submit" value="BUY NOW!!" name="pop"></form>
+					<br><div><h2>1090฿</h2></div>
+					<?php #ส่งเกม
+                                    $io = 0;
+                                    
+                                    function yui($val){
+                                    return $val;
+                                    }
+                                    if(isset($_POST["pop"])){
+                                    echo yui($_POST["pop"]);
+                                    $io = $io+1;
+                                } 
+                                if ($io==1){
+                                    if($loginn == 0){
+                                        echo "<script type=\"text/javascript\">";
+                                        echo "alert(\"PLEASE LOGIN FIRST\");";
+                                        echo "window.history.back();";
+                                        echo "</script>";;
+									}
+									else{
+                                    
+									$order_time = date("Y-m-d H:i:s");
+									$Price =$_POST['Price'];
+									$name = $_SESSION['name'];
+                                    
+                                    mysqli_query($con, "INSERT INTO Gorder(Gname, Price, order_time, username, Email)
+                                    VALUES('MONSTER HUNTER W',1090, '$order_time','$name','$mail1')");
+                                    echo "<script type=\"text/javascript\">";
+                                    echo "alert(\"Game  add!!\");";
+									echo "window.history.back();";	
+									Header("Location: payment/pay.php");
+                                    echo "</script>";
+                                    exit();
+                                    }	
+                                }
+                                else {
+                                    echo "<br>";
+                                } 
+                                ?>
 					</div>
 				</div>
 				<div class="row">
@@ -285,9 +324,16 @@
 	<script src="js/jquery.waypoints.min.js"></script>
 	
 	<script src="js/owl.carousel.min.js"></script>
-
-	
 	<script src="js/main.js"></script>
+	<style>
+	input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;}</style>
 
 	</body>
 </html>

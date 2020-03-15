@@ -3,10 +3,9 @@
     include('../login/condb.php');
     
     $ID = $_SESSION['ID'];
-    $name = $_SESSION['name'];
+      $name = $_SESSION['name'];
     $level = $_SESSION['level'];
     $loginn = $_SESSION['login_in'];
-    $_SESSION['ERT']= $_POST['id'];
     $commentt = $_SESSION["commento"];
     $Mcoin =  $_SESSION["coin"];
     $mail = $_SESSION["Email"];
@@ -14,12 +13,6 @@
     $Gname = $_POST['Gname'];
     $order_time = $_POST['order_time'];
     $username = $_POST['username'];
-    
-   
-    // $_SESSION['namepu'] = $_POST['username'];
-    // $_SESSION['emailpu'] = $_POST['member'];
-    // $_SESSION['gamepu'] = $_POST['Gname'];
-    // $_SESSION['velapu']=$_POST['order_time'];
 
     $n=10; 
     function getName($n) { 
@@ -45,26 +38,24 @@
       [
         'From' => [
           'Email' => "banklovecom1669@gmail.com",
-          'Name' => "CSGAMESTORE"
+          'Name' => "เราไง เราเอง"
         ],
         'To' => [
           [
-            'Email' => "$member",
-            'Name' => "$username"
+            'Email' => "tangmonaka1999@gmail.com",
+            'Name' => "แตงโมมมมมมมมมมมมมมมมมมมมมมมมมมมมมมม"
           ]
         ],
-        'Subject' => "คำสั่งซื้อของคุณได้รับการยืนยันเรียบร้อย",
+        'Subject' => "แจ้งยอดค้างชำระเงินของคุณ",
         'TextPart' => "My first Mailjet email",
-        'HTMLPart' => "<h3>คำสั่งซื้อเกม : $Gname  <br>
-        <a>เวลา : $order_time </a></h3><br />คีย์เกมของคุณ $username คือ : $POIU  <br><br>
-        <img src='https://scontent.fubp1-1.fna.fbcdn.net/v/t1.0-9/14681838_195903614176716_7113121991496901058_n.jpg?_nc_cat=111&_nc_sid=7aed08&_nc_ohc=ydiSOHXegWAAX8AaEld&_nc_ht=scontent.fubp1-1.fna&oh=c4833fd2a98f764e9912d4c5d38ab698&oe=5E93FA20'><br>
-        <h3>ขอขอบพระคูณที่ใช้บริการเว็บของเรา ไว้กลับมาอุดหนุนเราอีกนะฮัฟฟฟฟฟฟ</h3>",
+        'HTMLPart' => "<h3>คำสั่งซื้อเกม : GTA V SUper super very Edition  <br>
+        <a>เวลา : เมื่อกี้เองครับ </a></h3><br />คีย์เกมของคุณ พัธนิกร คือ : $POIU  <br><h3>กรุณาชำระเงิน จำ นวน 10,000,000 ภายในวันนี้ด้วยขอบคุณครับ</h3>",
         'CustomID' => "AppGettingStartedTest"
       ]
     ]
   ];
   $response = $mj->post(Resources::$Email, ['body' => $body]);
   $response->success() && var_dump($response->getData());
-  Header("Location: ../sentcom.php");
+  ;
 //   composer require mailjet/mailjet-apiv3-php
 ?>

@@ -21,23 +21,26 @@ session_start();
                       $_SESSION["coin"]=$row["coin"];
                       $_SESSION["Email"]=$row["Email"];
 
-                      if($_SESSION["level"]=="admin"){ 
+                      // if($_SESSION["level"]=="admin"){ 
 
-                        Header("Location: admin.php");
+                      //   Header("Location: admin.php");
 
 
-                      }
+                      // }
                   if ($_SESSION["level"]=="member"){ 
 
                         Header("Location: ../index2.php");  
-                        $_SESSION['login_in'] = 1; // ล็อคอินสำเร็จจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจจ
-                        // echo '<br /><a href="index3.php">index3</a>';
-                        // echo '<br /><a href="index2.php">index2</a>';
-                        // echo '<br /><a href="DEADBY.php">DEADBY</a>';
-                        // echo '<br /><a href="GTAV.php">GTAV</a>';
-                        // echo '<br /><a href="PUBG.php">PUBG</a>';
-                        // echo '<br /><a href="MHW.php">MHW</a>';
+                        $_SESSION['login_in'] = 1; 
                         $login_in = 1;
+                      }
+                  if ($_SESSION["level"]=="admin"){ 
+                       $_SESSION['login_in'] = 2;
+                        Header("Location: ../adpage.php");  
+                         
+                        
+                        
+                        
+                        $login_in = 2;
                       }
                   }else{
                         echo "<script>";

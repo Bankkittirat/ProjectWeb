@@ -158,7 +158,7 @@ if(isset($_POST["pop"])){
    
         if($UYT == $username){
         echo "<script type=\"text/javascript\">";
-        echo "alert(\"ซ้ำจ้า\");";
+        echo "alert(\"Username has already been used\");";
         ;
         echo "</script>";
         $jj = $jj+1;

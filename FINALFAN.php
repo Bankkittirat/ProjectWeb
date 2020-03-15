@@ -41,6 +41,7 @@
     $name = $_SESSION['name'];
 	$level = $_SESSION['level'];
 	$loginn = $_SESSION['login_in'];
+	$mail1 = $_SESSION["Email"];
  
 	?>
 
@@ -64,9 +65,16 @@
                         </div>
                         <div class="col-xs-10 text-right menu-1">
                             <ul>
-							<li><a href="http://localhost/beryllium/login/">LOGIN</a></li>
-							<li><a href="http://localhost/beryllium/login/register.php">REGISTER</a></li>
-							<li><a href="about.php">about</a></li>
+							<?php if ($loginn == 1){
+									
+									echo "<li> $name as $level</li>";
+									echo "<li><a href='http://localhost/beryllium/login/logout.php'>Logout</a></li>";
+							}
+								else{
+									echo "<li><a href='http://localhost/beryllium/login/'>Login</a></li>";
+									echo "<li><a href='http://localhost/beryllium/login/register.php'>REGISTER</a></li>";
+								}
+							?>
                             </ul>
                         </div>
                     </div>
@@ -80,24 +88,62 @@
 			<div class="gtco-container">
 				<div class="row gtco-heading">
 					<div class="col-md-7 text-left">
-						<h2>PLAYERUNKNOWN'S BATTLEGROUNDS</h2>
-						<p>PLAYERUNKNOWN'S BATTLEGROUNDS is a battle royale shooter that pits 100 players against each other in a struggle for survival. Gather supplies and outwit your opponents to become the last person standing.
+						<h2>FINAL FANTASY XV WINDOWS EDITION</h2>
+						<p>For the first time, players take control of Noctis's greatest foe in this brand-new episode of FINAL FANTASY XV! Delve into the dark tale of scorned saviour Ardyn Lucis Caelum and unravel the secrets surrounding his mysterious past.
 
-                            PLAYERUNKNOWN, aka Brendan Greene, is a pioneer of the battle royale genre and the creator of the battle royale game modes in the ARMA series and H1Z1: King of the Kill. At PUBG Corp., Greene is working with a veteran team of developers to make PUBG into the world's premiere battle royale experience.</p>
+*Players must purchase FINAL FANTASY XV in order to access this content. Updating to the latest version of the game may also be required.</p>
                         <video width="650" controls>
-                            <source src="https://steamcdn-a.akamaihd.net/steam/apps/256773105/movie480.webm?t=1579721657" type="video/mp4">
-                            <source src="https://steamcdn-a.akamaihd.net/steam/apps/256773105/movie480.webm?t=1579721657" type="video/ogg">
+                            <source src="https://steamcdn-a.akamaihd.net/steam/apps/256706009/movie480.webm?t=1516114078" type="video/mp4">
+                            <source src="https://steamcdn-a.akamaihd.net/steam/apps/256706009/movie480.webm?t=1516114078" type="video/ogg">
                             
                           </video>
                           
                           <p>
                           Video from
-                          <a href="https://store.steampowered.com/app/578080/PLAYERUNKNOWNS_BATTLEGROUNDS/" target="_blank">Steam</a>.
+                          <a href="https://store.steampowered.com/app/637650/FINAL_FANTASY_XV_WINDOWS_EDITION/" target="_blank">Steam</a>.
                           </p>
 					</div>
 					<div class="col-md-3 col-md-push-2 text-center">
-                        
-						<p class="mt-md"><a href="#" class="btn btn-special btn-block">BUY NOW</a></p>
+					<form method="post" action="<?php echo $_SERVER['PHP_SELF'];?>">
+					<input type="submit" value="BUY NOW!!" name="pop"></form>
+					<br><div><h2>1689฿</h2></div>
+					<?php #ดึงคอมเม้นนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนต์
+                                    $io = 0;
+                                    
+                                    function yui($val){
+                                    return $val;
+                                    }
+                                    if(isset($_POST["pop"])){
+                                    echo yui($_POST["pop"]);
+                                    $io = $io+1;
+                                } 
+                                if ($io==1){
+                                    if($loginn == 0){
+                                        echo "<script type=\"text/javascript\">";
+                                        echo "alert(\"PLEASE LOGIN FIRST\");";
+                                        echo "window.history.back();";
+                                        echo "</script>";
+									}
+									else{
+                                    
+									$order_time = date("Y-m-d H:i:s");
+									$Price =$_POST['Price'];
+									$name = $_SESSION['name'];
+                                    
+                                    mysqli_query($con, "INSERT INTO Gorder(Gname, Price, order_time, username, Email)
+                                    VALUES('Final Fantasy V',1689, '$order_time','$name','$mail1')");
+                                    echo "<script type=\"text/javascript\">";
+                                    echo "alert(\"Game  add!!\");";
+									echo "window.history.back();";	
+									Header("Location: payment/pay.php");
+                                    echo "</script>";
+                                    exit();
+                                    }	
+                                }
+                                else {
+                                    echo "<br>";
+                                } 
+                                ?>
 					</div>
 				</div>
 				<div class="row">
@@ -106,31 +152,31 @@
 						<div class="owl-carousel owl-carousel-carousel">
 							<div class="item">
 								<div class="gtco-staff">
-									<img src="https://dl.memuplay.com/new_market/img/com.tencent.ig.sc0.2019-10-17-19-58-05.jpg" alt="" class="img-responsive">
-									<h2>battle royale Games</h2>
+									<img src="https://steamcdn-a.akamaihd.net/steam/apps/637650/ss_a1fcc0d974bfc660bf3f48a3687b8a9f10336da3.600x338.jpg?t=1553563213" alt="" class="img-responsive">
+									<h2>Joined by your closest friends</h2>
 
 									<p> 
-                                        PLAYERUNKNOWN'S BATTLEGROUNDS is a battle royale shooter that pits 100 players against each other in a struggle for survival. Gather supplies and outwit your opponents to become the last person standing.</p>
+									On the roadtrip of a lifetime through a breathtaking open world, witness stunning landscapes and encounter larger-than-life beasts on your journey to reclaim your homeland from an unimaginable foe.</p>
 								</div>
 							</div>
 							<div class="item">
 								<div class="gtco-staff">
-									<img src="https://cdn-www.bluestacks.com/bs-images/Banner_com.tencent.iglite1.jpg" alt="" class="img-responsive">
-									<h2>Key Features</h2>
+									<img src="https://steamcdn-a.akamaihd.net/steam/apps/637650/extras/FFXV_WindowsEdition_10s_v4.jpg?t=1553563213" alt="" class="img-responsive">
+									<h2>In an action-packed battle system</h2>
 
-									<p>We also hope the intensity and explosive gameplay of Karakin has you ready for our newest heart-pumping, non-stop action game mode- Team Deathmatch. PUBG LABS is also returning with the next iteration of our Skill-Based Rating test, with changes based on feedback received from the first test.
-
-                                        We’re making some much needed and often requested changes to throwables. Extra-attention has been paid to Frag Grenades, which will be seeing change reducing their overall strength.</p>
+									<p>Channel the power of your ancestors to warp effortlessly through the air in thrilling combat, and together with your comrades, master the skills of weaponry, magic and team-based attacks.</p>
 
 								</div>
 							</div>
 							<div class="item">
 								<div class="gtco-staff">
-									<img src="https://www.androidpolice.com/wp-content/uploads/2020/01/PUBG-Mobile-0.16.5.jpg" alt="" class="img-responsive">
-									<h2>MATURE CONTENT DESCRIPTION</h2>
+									<img src="https://steamcdn-a.akamaihd.net/steam/apps/637650/ss_c3bc3ff54a74503709c84ffefa68139933853724.600x338.jpg?t=1553563213" alt="" class="img-responsive">
+									<h2>Now realised with the power</h2>
                                     The developers describe the content like this:
 
-                                    This Game may contain content not appropriate for all ages, or may not be appropriate for viewing at work: Frequent Violence or Gore, General Mature Content
+                                    Power of cutting-edge technology for Windows PCs, including support for high-resolution displays and HDR10, the beautiful and carefully-crafted experience of FINAL FANTASY XV can be explored like never before.
+
+
 
                                     
 								</div>
@@ -151,14 +197,15 @@
 					<div class="col-md-6 gtco-news">
 						<div class="game_area_sys_req_leftCol">
 							<ul>
-								<strong>Minimum:</strong><br><ul class="bb_ul"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> 64-bit Windows 7, Windows 8.1, Windows 10<br></li><li><strong>Processor:</strong> Intel Core i5-4430 / AMD FX-6300<br></li><li><strong>Memory:</strong> 8 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA GeForce GTX 960 2GB / AMD Radeon R7 370 2GB<br></li><li><strong>DirectX:</strong> Version 11<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 30 GB available space</li></ul>							</ul>
+							<ul>
+								<strong>Minimum:</strong><br><ul class="bb_ul"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> Windows® 7 SP1/ Windows® 8.1 / Windows® 10 64-bit<br></li><li><strong>Processor:</strong> Intel® Core™ i5-2500（3.3GHz and above）/ AMD FX™-6100 （3.3GHz and above）<br></li><li><strong>Memory:</strong> 8 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA® GeForce® GTX 760 / NVIDIA® GeForce® GTX 1050 / AMD Radeon™ R9 280<br></li><li><strong>DirectX:</strong> Version 11<br></li><li><strong>Storage:</strong> 100 GB available space<br></li><li><strong>Sound Card:</strong> DirectSound® compatible sound card, Windows Sonic and Dolby Atmos support<br></li><li><strong>Additional Notes:</strong> 720p 30fps</li></ul>							</ul>
 						</div>
 					</div>
 					<!-- END News -->
 					<div class="col-md-6 gtco-news">
 						<div class="game_area_sys_req_leftCol">
 							<ul>
-								<strong>Recommended:</strong><br><ul class="bb_ul"><li>Requires a 64-bit processor and operating system<br></li><li><strong>OS:</strong> 64-bit Windows 7, Windows 8.1, Windows 10<br></li><li><strong>Processor:</strong> Intel Core i5-6600K / AMD Ryzen 5 1600<br></li><li><strong>Memory:</strong> 16 GB RAM<br></li><li><strong>Graphics:</strong> NVIDIA GeForce GTX 1060 3GB / AMD Radeon RX 580 4GB<br></li><li><strong>DirectX:</strong> Version 11<br></li><li><strong>Network:</strong> Broadband Internet connection<br></li><li><strong>Storage:</strong> 30 GB available space</li></ul>							</ul>
+								v
 						</div>
 					</div>
 				</div>
@@ -276,6 +323,15 @@
 
 	
 	<script src="js/main.js"></script>
+	<style>
+	input[type=button], input[type=submit], input[type=reset] {
+  background-color: #4CAF50;
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 2px;
+  cursor: pointer;}</style>
 
 	</body>
 </html>

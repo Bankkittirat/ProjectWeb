@@ -6,28 +6,45 @@
 -->
 <?php  
  session_start(); 
+ include('login/condb.php');
  $username = $_SESSION["username"];
  $ID = $_SESSION['ID'];
     $name = $_SESSION['name'];
 	$level = $_SESSION['level'];
     $loginn = $_SESSION['login_in'];
     $Mcoin =  $_SESSION["coin"];
- $connect = mysqli_connect("localhost", "root", "", "login_db");  
- if(isset($_POST["insert"]))  
- {  
-      $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
-      $query = "INSERT INTO tbl_images(name,username) VALUES ('$file',$username)";  
-      if(mysqli_query($connect, $query))  
-      {  
-           echo '<script>alert("Image Inserted into Database")</script>';  
-      }  
- }  
+ 
+ 
+$connect = mysqli_connect("localhost", "root", "", "login_db");  
+//  if(isset($_POST["insert"]))  
+//  {  
+//       $file = addslashes(file_get_contents($_FILES["image"]["tmp_name"]));  
+//       $query = "INSERT INTO tbl_images(name,username) VALUES ('$file','$username')";  
+      
+//       if(mysqli_query($connect, $query))  
+//       {  
+//            echo '<script>alert("Your receipt has been uploaded. Please wait for the administrator to check.")</script>';  
+           
+        
+//       }  
+//  }  
+
+$io = 0;
+                                    
+           function yui($val){
+           return $val;}
+           if(isset($_POST["insert"])){
+           $io = $io+1;} 
+            if($io==1){
+                Header("Location: index2.php");
+            }
+
  ?>  
 <html>
 	<head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>CSGAMESTORE &mdash; The best game store ever</title>
+    <title>CSGAMESTORE &mdash; News</title>
     
            <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>  
            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />  
@@ -74,80 +91,102 @@
 				
 				<div class="row">
 					<div class="col-sm-2 col-xs-12">
-						<div id="gtco-logo"><a href="../index2.php">CSGAMESTORE</div>
+						<div id="gtco-logo"><a href="index2.php">CSGAMESTORE</div>
 					</div>
 					<div class="col-xs-10 text-right menu-1 menuu">
 						<ul>
 							<?php if ($loginn == 1){
 
-									echo "<a class = 'TI2'> $name as $level : $Mcoin M &nbsp&nbsp</a>";
-									echo "<a class = 'TI2' href='http://localhost/beryllium/login/logout.php'>Logout &nbsp&nbsp</a>";
-							}
-								else{
-									echo "<a class = 'TI2' href='http://localhost/beryllium/login/'>Login</a>";
-									echo "<a class = 'TI2' href=http://localhost/beryllium/login/register.php'>REGISTER</a>";
-								}
-							?>
-							<a class = 'TI2' href="about.php">about</a>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
-		<style>
-            .TI2{
-                color:#000000	;text-align:center;
-            }
-
-        </style>
-        <br /><br />  
-           <div class="container" style="width:500px;">  
-                <h3 align="center">Insert and Display Images From Mysql Database in PHP</h3>  
-                <br />  
-                <form method="post" enctype="multipart/form-data">  
-                     <input type="file" name="image" id="image" />  
-                     <br />  
-                     <input type="submit" name="insert" id="insert" value="Insert" class="btn btn-info" />  
-                     </form>  
-
-                <br />  
-                <br />  
-                
-                <table class="table table-bordered">  
-                     <tr>  
-                          <th>Image</th>  
-                     </tr>  
-                <?php  
-                $query = "SELECT * FROM tbl_images ORDER BY id DESC";  
-                $result = mysqli_query($connect, $query);  
-                                    
-                                   $io = 0;
-                                    
-                                    function yui($val){
-                                    return $val;
-                                    }
-                                    if(isset($_POST["insert"])){
-                                    echo yui($_POST["insert"]);
-                                    $io = $io+1;
-                                   } 
-                                if ($io==1){
-                                   Header("Location: send.php");
+                                echo "<li class='TI3'> $name as $level&nbsp&nbsp </li>";
+                                echo "<a class = 'TI2' href='http://localhost/beryllium/login/logout.php'>LOGOUT &nbsp&nbsp</a>";
                                 }
-               //  while($row = mysqli_fetch_array($result))  
-               //  {  
-               //       echo '  
-               //            <tr>  
-               //                 <td>  
-               //                      <img src="data:image/jpeg;base64,'.base64_encode($row['name'] ).'" height="200" width="200" class="img-thumnail" />  
-               //                 </td>  
-               //            </tr>  
-               //       ';  
-               //  }  
-                ?>  
-                </table>  
+                                else{
+                                echo "<a class = 'TI2' href='http://localhost/beryllium/login/'>LOGIN &nbsp&nbsp</a>";
+                                echo "<a class = 'TI2' href=http://localhost/beryllium/login/register.php'>REGISTER &nbsp&nbsp</a>";
+                                }
+                                ?>
+                                
+                                </ul>
+                                </div>
+                                </div>
+                                </div>
+                                </nav>
+<style>
+.TI2{
+color:#FFFFFF !important ;text-align:center;
+}
+.TI3{
+color:#000000 !important ;text-align:center; font-size:15px;
+}
+
+.TI4{
+color:#FFFFFF; text-align:center; font-size:20px;
+}
+.cc{
+margin: auto;
+}
+.bg{
+background-color:white;opacity:0.8;
+}
+
+.sizeb{height:50px;width:200px;}
+.button4 {
+    background-color: white;
+    color: black;
+    border: 0.5px solid #FFFFFF;
+    border-radius: 8px;
+    transition-duration: 0.18s;
+}
+.button4:hover {
+    background-color: #009933;
+    color: white;
+}
+.slip{
+    margin-left: 130px;
+    margin-right: 130px;
+}
+.TIII{
+    color: black; 
+    opacity:0.8;
+    font-size:20px;
+}
+.gg{
+    font-size:50px;
+    opacity:0.7;
+}
+
+.TIIII{
+    color: black; 
+    opacity:0.9;
+    font-size:30px;
+}
+.TIIIII{
+    color: red; 
+    opacity:0.6;
+    font-size:30px;
+}
+
+
+</style>
+        <br /><br /> 
+           <div class="container" style="width:1500px;">  
+                <h3 align="center" class="gg">On the occasion of celebrating the opening of a new website</h3>  
+                <br><br/><br><br/>
+                <form method="post" enctype="multipart/form-data">  
+                <div align="center" >
+                    <span class="TIII">This is 20% discount for everyone. Expires only by the end of this month.</span><br/><br/>
+                    <span class="TIIII">Here is your code : </span><span class="TIIIII">ZXCVBN</span>
+                    <br/><br/><br/><br/><br/>/><br/><br/>/><br/><br/>/><br/><br/>/><br/><br/>/><br/><br/>/><br/>
+                </div>
+                <div align="center" >
+					<button type="submit" name="insert" id="insert" class="button4 sizeb">Back to home</button>
+				</div>
+                </form>  
+
+                <br />  
+                <br />  
            </div>  
 		
-
 		
 		</footer>
 		<!-- END footer -->
@@ -290,6 +329,7 @@ margin-left: 4px;
                      return false;  
                 }  
            }  
+           
       });  
  });  
  </script>  

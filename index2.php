@@ -42,13 +42,29 @@
 	$ID = $_SESSION['ID'];
     $name = $_SESSION['name'];
 	$level = $_SESSION['level'];
-	$loginn = $_SESSION['login_in'];
-	$commentt = $_SESSION["commento"];
-	$Mcoin =  $_SESSION["coin"]
+	$loginn = $_SESSION['login_in']
 	?>
 
     </head>
 <body>
+<style>
+.csgame{
+	color:white!important; font-size:20px;
+}
+.TI2{
+color:#000000 !important ;text-align:center;
+}
+.TI3{
+color:red !important ;text-align:center; font-size:15px;
+}
+
+.TI4{
+color:#FFFFFF; text-align:center; font-size:20px; 
+}
+.cc{
+margin: auto;
+}
+</style>
 
 <div class="bgbg">
     <div class="gtco-loader"></div>
@@ -60,28 +76,26 @@
 				
 				<div class="row">
 					<div class="col-sm-2 col-xs-12">
-						<div id="gtco-logo"><a href="index2.php">CSGAMESTORE</div>
+					<a href="index2.php" class='csgame'>CSGAMESTORE </a>
 					</div>
 					<div class="col-xs-10 text-right menu-1 menuu">
 						<ul>
 							<?php if ($loginn == 1){
 
-									echo "<li> $name as $level : $Mcoin M &nbsp&nbsp </li>";
-									echo "<a class = 'TI2' href='http://localhost/beryllium/login/logout.php'>LOGOUT &nbsp&nbsp</a>";
+							echo "<li class='TI3'> $name as $level &nbsp&nbsp </li>";
+							echo "<a class = 'TI2' href='http://localhost/beryllium/login/logout.php'>LOGOUT &nbsp&nbsp</a>";
 							}
-								else{
-									echo "<a class = 'TI2' href='http://localhost/beryllium/login/'>LOGIN &nbsp&nbsp</a>";
-									echo "<a class = 'TI2' href=http://localhost/beryllium/login/register.php'>REGISTER &nbsp&nbsp</a>";
-								}
+							else{
+							echo "<a class = 'TI2' href='http://localhost/beryllium/login/'>LOGIN &nbsp&nbsp</a>";
+							echo "<a class = 'TI2' href=http://localhost/beryllium/login/register.php>REGISTER &nbsp&nbsp</a>";
+							}
 							?>
-							<a class = 'TI2' href="about.php">ABOUT</a>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</nav>
-		
-		
+<a class = 'TI2' href="about.php">ABOUT</a>
+</ul>
+</div>
+</div>
+</div>
+</nav>
 
 		<div class="gtco-container">
 			<div class="row">
@@ -117,10 +131,10 @@
 		</div>
 
 		<div class="gtco-section" >
-			<div class="gtco-container" >
-				<div class="row">
-					<div class="col-md-8 col-md-offset-2 gtco-heading text-center ">
-						<a class='TI3'>WELCOME TO CSGAMESTORE </a><br>
+			<div class="gtco-container " >
+				<div class="row ">
+					<div class="col-md-8 col-md-offset-2 gtco-heading text-center real5">
+						<a class='TI100'>WELCOME TO CSGAMESTORE </a><br>
 						<a class='TI4'>หากคุณกำลังมองหาร้านขายเกมส์คุณภาพ ที่ซื้อได้ชัวป๊าบ และมีเกมส์มากมาย ทั้ง Steam Wallet หรือ เติม Game online ก็สามารถจับจองกันได้ง่ายๆที่เกม Gamefilling ฟิลล์ทุกความสุข สนุกทุกการเล่น
 							อย่าลืมหันมาซื้อเกมเเท้กันนะฮัฟฟฟฟ
 						</a>
@@ -132,8 +146,8 @@
 						<div class="owl-carousel owl-carousel-carousel">
 							<div class="item">
 								<div class="gtco-item">
-									<a href="#"><img src="https://www.playulti.com/static/thumb/2017/8/19/attach-1505796331670.jpg" alt="" class="img-responsive"></a>
-									<a class='real' href="#">FINAL FANTASY XV WINDOWS EDITION</a><br>
+									<a href="FINALFAN.php"><img src="https://www.playulti.com/static/thumb/2017/8/19/attach-1505796331670.jpg" alt="" class="img-responsive"></a>
+									<a class='real' href="FINALFAN.php">FINAL FANTASY XV WINDOWS EDITION</a><br>
 									<a class='TII'>1689 ฿</a>
 								</div>
 							</div>
@@ -202,6 +216,9 @@
 			</div>
 		</div>
 		<style>
+			.name{
+				color:green;text-align:center;opacity:0.7;
+			}
             .TI{
                 color:#B0B0B0	;text-align:center; font-size:1;
 			}
@@ -212,10 +229,25 @@
                 color: #ECECEC; 
 			}
 			.HH{
-                color: #2FFF16; font-size:25px
+                color: #2BD220; font-size:25px
 			}
 			.real{
-				color:white; font-size:200 !important;
+				color:white; font-size:22px !important;
+			}
+			.real2{
+				color:white; font-size:30px !important;
+			}
+			.real3{
+				background: rgba(0,0,0,0.5);
+			}
+			.real3 div{
+				opacity:1!important;
+			}
+			.real5{
+				background: rgba(0,0,0,0.5);
+			}
+			.ct{
+				text-align:left;
 			}
 
 			
@@ -223,32 +255,33 @@
         </style>
 		<!-- END Work -->
 
-		<div class="gtco-section">
-			<div class="gtco-container">
-				<div class="row">
-					<div class="col-md-6 gtco-news">
-					<a class='real' >NEWS AND PROMOTIONS</a>	
+		<div class="gtco-section real5">
+			<div class="gtco-container ">
+				<div class="row ">
+					<div class="col-md-6 gtco-news ">
+					<a class='real2' >NEWS AND PROMOTIONS</a>	
 						<ul>
 							<li>
-								<a href="#">
+								<a href="coupon.php">
 									<span class="TIII">March 11, 2020</span><br>
-									<span class="HH">New member can get discount code for free here!!!</span><br>
-									<span class="TIII">New member can get a free discount code from now until the end of April due to the opportunity open a new website.</span>
+									<span class="HH">Free discount codes welcome the upcoming summer.</span><br>
+									<span class="TIII">Ahhhhhh! that's hot</span>
 								</a>
 							</li>
 
 							<li>
-								<a href="#">
+								<a href="coupon2.php">
 									<span class="TIII">March 11, 2020</span><br>
-									<span class="HH">Found a first error on web!!!</span><br>
-									<span class="TIII">We found the first error. Which we don't know how to solve the problem But we can fix it.</span>
+									<span class="HH">Developers are generous. Give away free code here</span><br>
+									<span class="TIII">Both of us are really kind. if you don't believe it. Try to get the free code inside here.Both of us are really kind. if you don't believe it. Try to get the free code inside here.</span>
 								</a>
 							</li>
 
 							<li>
-								<a href="#">
+								<a href="coupon3.php
+								">
 									<span class="TIII">March 10, 2020</span><br>
-									<span class="HH">Please celebrate the opening of the website</span><br>
+									<span class="HH">Celebrating the opening of a new website Give away the discount code here</span><br>
 									<span class="TIII">Because there is an opportunity open a new website You can bless us on our social media. There are also giveaways. Please stay tuned.</span>
 								</a>
 							</li>
@@ -256,7 +289,9 @@
 					</div>
 					<!-- END News -->
 					<div class="col-md-5 col-md-push-1 gtco-testimonials">
-						<h2>COMMENT</h2>
+						
+						<h2 class="real2">COMMENT</h2>
+					
 						<blockquote>
                         <style>
                             textarea {
@@ -271,7 +306,7 @@
 						<blockquote>
 
 						
-							<div style="height:350px;width:300px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;background-color:#FFFFFF;opacity:0.85;" >
+							<div style="height:350px;width:350px;border:1px solid #ccc;font:16px/26px Georgia, Garamond, Serif;overflow:auto;background-color:#FFFFFF;opacity:0.85;" >
                                 <?php #ดึงคอมเม้นนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนนต์
                                     $io = 0;
                                     include 'login/condb.php';
@@ -306,15 +341,16 @@
                                 } 
                                 ?>
 							
-                                <div class="d-flex justify-content-center links">
+                                <div class="d-flex justify-content-center links ct">
                                     <?php 
                                         function getComment($con){
                                             $sql3 = "SELECT * FROM comment ORDER BY date_time DESC;";
                                             $result = $con->query($sql3);
                                             while ($row = $result->fetch_assoc()) {
-											echo "<a class = 'TI'>".$row['name']."</a>";
+											echo "<a class = 'TI'>"."Post by "."</a>";
+											echo "<a class = 'name'>".$row['name']."</a>";
                                             echo "<a class = 'TI'>".$row['date_time']."</a>"."<br>";
-                                            echo "<p>&ldquo;"." ".$row['commento']." "."&ldquo;"."<br>"."<br></p>";
+                                            echo "<p>“"."  ".$row['commento']."  "."”"."<br>"."<br></p>";
                                             }
                                         }	
                                         getComment($con);
@@ -333,7 +369,7 @@
 
 		<!-- END  -->
 
-		<div class="gtco-section gto-features" style="background-color:#FFFFFF;opacity:0.8;"">
+		<div class="gtco-section gto-features " style="background-color:#FFFFFF;opacity:0.8;">
 			<div class="gtco-container" >
 				<div class="row">
 					<div class="col-md-4">
@@ -367,26 +403,19 @@
 			</div>
 		</div>
 
-		<footer id="gtco-footer" class="gtco-section" role="contentinfo">
-			<div class="gtco-container">
-				<div class="row row-pb-md">
+		<footer id="gtco-footer" class="gtco-section " role="contentinfo" >
+			<div class="gtco-container ">
+				<div class="row row-pb-md ft">
 					<div class="col-md-4 gtco-widget gtco-footer-paragraph">
 						<h3>CSGAMESTORE</h3>
-						<p>The best games selling website in Thailand. Founded by 2 Comscience students in 2020.
+						<p>The best games selling website in Thailand. <br>Founded by 2 Comscience students in 2020.<br>
 							 Was created because it was a project.</p>
 					</div>
+					
+					
+					
 					<div class="col-md-4">
 						<div class="row">
-							<div class="col-md-6 gtco-footer-link">
-								<h3>Links</h3>
-								<ul class="gtco-list-link">
-									<li><a href="index2.php">Home</a></li>
-									<li><a href="#">About</a></li>
-									<li><a href="#">Register</a></li>
-									<li><a href="login/blog/resources/views/auth/login.blade.php">Login</a></li>
-									<li><a href="#">Report</a></li>
-								</ul>
-							</div>
 							<div class="col-md-6 gtco-footer-link">
 								<h3>BEST SELLING</h3>
 								<ul class="gtco-list-link">
@@ -398,7 +427,7 @@
 							</div>
 						</div>
 					</div>
-					<div class="col-md-4 gtco-footer-subscribe">
+					<!-- <div class="col-md-4 gtco-footer-subscribe">
 						<form class="form-inline">
 						  <div class="form-group">
 						    <label class="sr-only" for="exampleInputEmail3">Email address</label>
@@ -406,7 +435,7 @@
 						  </div>
 						  <button type="submit" class="btn btn-primary">Send</button>
 						</form>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<div class="gtco-copyright">
@@ -450,7 +479,8 @@
 @import url('https://fonts.googleapis.com/css?family=Numans');
 
 html,body{
-background-image: url('https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80');
+/* background-image: url('https://images.unsplash.com/photo-1547394765-185e1e68f34e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&w=1000&q=80'); */
+background-image: url('https://images.alphacoders.com/681/thumb-1920-681587.png');
 background-attachment: fixed;
 opacity: 1;
 background-size: cover;
@@ -459,12 +489,18 @@ opacity: 1 !important;
 height: 100%;
 font-family: 'Numans', sans-serif;
 }
+.ft{
+	margin-left: auto;
+    margin-right: auto;
+    width:130em;
+	text-align:center;
+}
 
 .TI2{
 	color:#FFFFFF !important ;text-align:center;
 }
 
-.TI3{
+.TI100{
 	color:#FFFFFF	;text-align:center; font-size:40px;
 }
 
